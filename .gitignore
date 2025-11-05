@@ -1,0 +1,94 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDEs & AI Tools
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.cursor/
+.aider*
+.github/copilot/
+
+# Frontend
+node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Data & Models
+data/*.db
+data/vector_store/
+*.faiss
+*.pkl
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
+
+# Logs
+logs/
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Deployment
+.vercel/
+.netlify/
+
+# Testing
+.coverage
+.pytest_cache/
+coverage/
+
+# Secrets (double-check these never get committed)
+*secret*
+*key*
+!**/example*
+
+# Personal notes and AI assistance files (DO NOT COMMIT)
+NEXT_STEPS.md
+DAY_*_COMPLETE.md
+docs/day*-summary.md
+docs/progress.md
+docs/learning-resources.md
+**/TODO.md
+**/NOTES.md
+**/*-notes.md
+
