@@ -1,6 +1,8 @@
 """Application configuration and settings."""
 from pydantic_settings import BaseSettings
 from typing import List
+import os
+from pathlib import Path
 
 
 class Settings(BaseSettings):
@@ -25,13 +27,17 @@ class Settings(BaseSettings):
     # Logging
     LOG_LEVEL: str = "INFO"
     
+    # Development - Use mock LLM instead of OpenAI
+    USE_MOCK_LLM: bool = True  # Set to False when you have OpenAI credits
+    
     @property
     def cors_origins_list(self) -> List[str]:
         """Parse CORS_ORIGINS string into a list."""
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
     
     class Config:
-        env_file = ".env"
+        # Look for .env in backend directory
+        env_file = Path(__file__).parent.parent / ".env"
         case_sensitive = True
 
 

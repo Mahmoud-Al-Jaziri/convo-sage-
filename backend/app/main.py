@@ -40,9 +40,12 @@ async def root():
         "health": "/health"
     }
 
-# Import and include routers (will be added as we build)
-# from app.api import chat, products, outlets, calculator
-# app.include_router(chat.router)
+# Import and include routers
+from app.api import chat
+app.include_router(chat.router)
+
+# Coming soon
+# from app.api import products, outlets, calculator
 # app.include_router(products.router)
 # app.include_router(outlets.router)
 # app.include_router(calculator.router)
