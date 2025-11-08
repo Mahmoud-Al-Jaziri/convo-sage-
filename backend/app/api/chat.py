@@ -2,7 +2,7 @@
 from fastapi import APIRouter, HTTPException
 from app.models.chat_models import ChatRequest, ChatResponse
 from app.agents.memory_store import memory_store
-from app.agents.conversation_agent import ConversationAgent
+from app.agents.tool_agent import ToolAgent
 
 router = APIRouter(prefix="/chat", tags=["Chat"])
 
@@ -27,8 +27,8 @@ async def chat(request: ChatRequest):
         # Get or create session
         session_id, memory = memory_store.get_or_create_session(request.session_id)
         
-        # Create agent for this session
-        agent = ConversationAgent(memory)
+        # Create tool agent for this session (with calculator support)
+        agent = ToolAgent(memory)
         
         # Process message
         ai_response = await agent.process_message(request.message)

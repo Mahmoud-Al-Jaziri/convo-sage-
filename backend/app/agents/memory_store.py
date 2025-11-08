@@ -18,7 +18,7 @@ class MemoryStore:
         self._sessions: Dict[str, ConversationBufferMemory] = {}
         self._session_metadata: Dict[str, dict] = {}
     
-        
+    def get_or_create_session(self, session_id: Optional[str] = None):
         """
         Get existing session memory or create a new one.
         
