@@ -41,12 +41,12 @@ async def root():
     }
 
 # Import and include routers
-from app.api import chat
+from app.api import chat, products
 app.include_router(chat.router)
+app.include_router(products.router)
 
 # Coming soon
-# from app.api import products, outlets, calculator
-# app.include_router(products.router)
+# from app.api import outlets
 # app.include_router(outlets.router)
 # app.include_router(calculator.router)
 

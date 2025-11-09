@@ -1,0 +1,27 @@
+outlet_id,outlet_name,address,city,state,postcode,latitude,longitude,phone,operating_hours,has_drive_thru,has_wifi,seating_capacity,opening_date
+OUT001,ZUS Coffee KLCC,Lot G-315 Ground Floor Suria KLCC Kuala Lumpur City Centre,Kuala Lumpur,Wilayah Persekutuan,50088,3.1579,101.7116,+60321635500,Mon-Sun: 8:00 AM - 10:00 PM,FALSE,TRUE,45,2021-03-15
+OUT002,ZUS Coffee Pavilion KL,Lot 6.05.00 Level 6 Pavilion Kuala Lumpur 168 Jalan Bukit Bintang,Kuala Lumpur,Wilayah Persekutuan,55100,3.1493,101.7142,+60321101688,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,40,2021-05-20
+OUT003,ZUS Coffee Mid Valley,Lot LG-074A Lower Ground Floor Mid Valley Megamall Lingkaran Syed Putra,Kuala Lumpur,Wilayah Persekutuan,59200,3.1187,101.6775,+60322872299,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,50,2021-07-10
+OUT004,ZUS Coffee Bangsar Village,No 7 Jalan Telawi 1 Bangsar Baru,Kuala Lumpur,Wilayah Persekutuan,59100,3.1284,101.6714,+60322015566,Mon-Sun: 8:00 AM - 11:00 PM,FALSE,TRUE,35,2021-09-01
+OUT005,ZUS Coffee Sunway Pyramid,Lot LG2.106 Sunway Pyramid Shopping Mall 3 Jalan PJS 11/15 Bandar Sunway,Petaling Jaya,Selangor,47500,3.0731,101.6074,+60356388877,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,55,2021-11-12
+OUT006,ZUS Coffee 1 Utama,Lot S331 Second Floor 1 Utama Shopping Centre 1 Lebuh Bandar Utama,Petaling Jaya,Selangor,47800,3.1503,101.6147,+60378065544,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,60,2022-01-15
+OUT007,ZUS Coffee The Curve,Lot G.20 Ground Floor The Curve 6 Jalan PJU 7/3 Mutiara Damansara,Petaling Jaya,Selangor,47810,3.1577,101.6289,+60361018899,Mon-Sun: 9:00 AM - 10:00 PM,FALSE,TRUE,42,2022-03-20
+OUT008,ZUS Coffee IOI City Mall,Lot S110 First Floor IOI City Mall Lebuh IRC IOI Resort City,Putrajaya,Selangor,62502,2.9509,101.6943,+60387646633,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,48,2022-05-08
+OUT009,ZUS Coffee Subang Parade,Lot F2.08A Level 2 Subang Parade Jalan SS16/1,Subang Jaya,Selangor,47500,3.0755,101.5886,+60356333322,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,38,2022-06-25
+OUT010,ZUS Coffee Tropicana Gardens Mall,Lot 1F.06 First Floor Tropicana Gardens Mall 2A Jalan PJU 3 Tropicana,Petaling Jaya,Selangor,47410,3.1313,101.6025,+60378801155,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,44,2022-08-14
+OUT011,ZUS Coffee Setia City Mall,Lot LG-K2 Lower Ground Floor Setia City Mall No 7 Jalan Setia Dagang,Shah Alam,Selangor,40170,3.0622,101.5437,+60355198844,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,40,2022-09-30
+OUT012,ZUS Coffee Paradigm Mall,Lot GF-26 Ground Floor Paradigm Mall 1 Jalan SS7/26A Kelana Jaya,Petaling Jaya,Selangor,47301,3.1068,101.5984,+60378032211,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,46,2022-11-11
+OUT013,ZUS Coffee AEON Shah Alam,Lot G68 Ground Floor AEON Mall Shah Alam 1 Jalan Akuatik 13/64,Shah Alam,Selangor,40000,3.0733,101.5185,+60355592277,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,35,2023-01-22
+OUT014,ZUS Coffee MyTOWN Shopping Centre,Lot LG-145 Lower Ground MyTOWN Shopping Centre 6 Jalan Cochrane Cheras,Kuala Lumpur,Wilayah Persekutuan,55100,3.1163,101.7267,+60392125566,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,52,2023-03-10
+OUT015,ZUS Coffee Pavilion Bukit Jalil,Lot 2.19.00 Level 2 Pavilion Bukit Jalil 2 Jalan Persiaran Jalil 1,Kuala Lumpur,Wilayah Persekutuan,57000,3.0586,101.7004,+60386077788,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,58,2023-05-18
+OUT016,ZUS Coffee Drive-Thru Puchong,No 2 Jalan Puteri 1/4 Bandar Puteri,Puchong,Selangor,47100,3.0157,101.6301,+60387662299,Mon-Sun: 7:00 AM - 11:00 PM,TRUE,FALSE,20,2023-07-05
+OUT017,ZUS Coffee Drive-Thru Kota Damansara,No 12 Jalan PJU 5/9 Dataran Sunway Kota Damansara,Petaling Jaya,Selangor,47810,3.1528,101.5891,+60361410033,Mon-Sun: 7:00 AM - 11:00 PM,TRUE,FALSE,18,2023-08-20
+OUT018,ZUS Coffee Ampang Point,Lot 1-10 First Floor Ampang Point Shopping Centre Jalan Mamanda 3,Ampang,Selangor,68000,3.1491,101.7628,+60342977744,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,32,2023-10-12
+OUT019,ZUS Coffee Cheras Leisure Mall,Lot G-20 Ground Floor Cheras Leisure Mall Jalan Manis 6 Taman Segar,Cheras,Kuala Lumpur,56100,3.0987,101.7380,+60390578855,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,36,2023-11-25
+OUT020,ZUS Coffee Quill City Mall,Lot 4-02-01 Level 4 Quill City Mall 1018 Jalan Sultan Ismail,Kuala Lumpur,Wilayah Persekutuan,50250,3.1659,101.7046,+60321661199,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,41,2024-01-14
+OUT021,ZUS Coffee eCurve,Lot G-11 Ground Floor eCurve Mutiara Damansara,Petaling Jaya,Selangor,47800,3.1589,101.6294,+60361018800,Mon-Sun: 9:00 AM - 10:00 PM,FALSE,TRUE,38,2024-02-28
+OUT022,ZUS Coffee Sunway Velocity,Lot T2-32 Level 2 Sunway Velocity Mall Lingkaran SV Sunway Velocity,Kuala Lumpur,Wilayah Persekutuan,55100,3.1236,101.7314,+60392071166,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,44,2024-04-10
+OUT023,ZUS Coffee Empire Shopping Gallery,Lot G-20 Ground Floor Empire Shopping Gallery Jalan SS16/1,Subang Jaya,Selangor,47500,3.0746,101.5897,+60356331177,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,34,2024-05-22
+OUT024,ZUS Coffee Da:men USJ,Lot G-03 Ground Floor Da:men USJ 1 Jalan USJ 1/1A,Subang Jaya,Selangor,47600,3.0425,101.5802,+60380123344,Mon-Sun: 10:00 AM - 10:00 PM,FALSE,TRUE,42,2024-06-30
+OUT025,ZUS Coffee Drive-Thru Cyberjaya,No 3-G Jalan Teknokrat 6 Cyber 5,Cyberjaya,Selangor,63000,2.9213,101.6559,+60383183366,Mon-Sun: 7:00 AM - 11:00 PM,TRUE,FALSE,22,2024-08-15
+

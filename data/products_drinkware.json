@@ -1,0 +1,175 @@
+[
+  {
+    "id": "DW001",
+    "name": "ZUS All Day Cup 500ml (17oz) - Aqua Collection",
+    "category": "Drinkware",
+    "subcategory": "Tumblers",
+    "description": "Premium stainless steel tumbler with double-wall vacuum insulation. Keeps beverages hot for 6 hours or cold for 12 hours. Features a leak-proof lid and fits most car cup holders. Part of the exclusive Aqua Collection with a sleek aqua blue finish.",
+    "price_myr": 79.00,
+    "capacity_ml": 500,
+    "material": "Stainless Steel",
+    "features": [
+      "Double-wall vacuum insulation",
+      "Leak-proof lid",
+      "BPA-free",
+      "Fits standard cup holders",
+      "Easy-grip design"
+    ],
+    "colors": ["Aqua Blue", "Ocean Teal", "Sky Blue"],
+    "care_instructions": "Hand wash recommended. Do not microwave.",
+    "in_stock": true,
+    "weight_grams": 350
+  },
+  {
+    "id": "DW002",
+    "name": "ZUS Classic Tumbler 350ml (12oz)",
+    "category": "Drinkware",
+    "subcategory": "Tumblers",
+    "description": "Compact and portable tumbler perfect for your daily coffee fix. Features premium stainless steel construction with vacuum insulation technology. Ideal for commuters and coffee enthusiasts on the go.",
+    "price_myr": 59.00,
+    "capacity_ml": 350,
+    "material": "Stainless Steel",
+    "features": [
+      "Vacuum insulation",
+      "Spill-resistant lid",
+      "BPA-free",
+      "Compact size",
+      "Matte finish"
+    ],
+    "colors": ["Matte Black", "Pearl White", "Rose Gold"],
+    "care_instructions": "Hand wash only. Not dishwasher safe.",
+    "in_stock": true,
+    "weight_grams": 280
+  },
+  {
+    "id": "DW003",
+    "name": "ZUS Travel Mug 600ml (20oz) - Boss Edition",
+    "category": "Drinkware",
+    "subcategory": "Travel Mugs",
+    "description": "Large capacity travel mug inspired by our signature Boss Blend. Perfect for long journeys and extended work sessions. Features advanced thermal technology to maintain temperature for extended periods.",
+    "price_myr": 95.00,
+    "capacity_ml": 600,
+    "material": "Stainless Steel",
+    "features": [
+      "Superior thermal retention",
+      "One-hand operation lid",
+      "Non-slip base",
+      "Wide mouth for easy filling",
+      "BPA-free"
+    ],
+    "colors": ["Boss Black", "Midnight Blue"],
+    "care_instructions": "Dishwasher safe (top rack only).",
+    "in_stock": true,
+    "weight_grams": 420
+  },
+  {
+    "id": "DW004",
+    "name": "ZUS Glass Coffee Cup 300ml (10oz) with Sleeve",
+    "category": "Drinkware",
+    "subcategory": "Cups",
+    "description": "Elegant double-wall borosilicate glass cup with protective silicone sleeve. Perfect for showcasing your beautiful coffee layers. Thermal design keeps drinks at optimal temperature while remaining comfortable to hold.",
+    "price_myr": 45.00,
+    "capacity_ml": 300,
+    "material": "Borosilicate Glass with Silicone Sleeve",
+    "features": [
+      "Double-wall glass construction",
+      "Thermal insulation",
+      "Microwave safe (without sleeve)",
+      "Dishwasher safe",
+      "Clear glass design"
+    ],
+    "colors": ["Clear with Black Sleeve", "Clear with Brown Sleeve"],
+    "care_instructions": "Dishwasher safe. Remove sleeve before microwaving.",
+    "in_stock": true,
+    "weight_grams": 180
+  },
+  {
+    "id": "DW005",
+    "name": "ZUS Signature Water Bottle 750ml (25oz)",
+    "category": "Drinkware",
+    "subcategory": "Water Bottles",
+    "description": "Stay hydrated throughout the day with this premium water bottle. Features a wide mouth opening for easy ice insertion and cleaning. Perfect for both hot and cold beverages with 24-hour temperature retention.",
+    "price_myr": 85.00,
+    "capacity_ml": 750,
+    "material": "Stainless Steel",
+    "features": [
+      "24-hour cold retention",
+      "12-hour hot retention",
+      "Wide mouth opening",
+      "Powder-coated exterior",
+      "BPA-free",
+      "Carrying handle"
+    ],
+    "colors": ["Forest Green", "Burgundy Red", "Navy Blue", "Charcoal Gray"],
+    "care_instructions": "Hand wash recommended for exterior coating.",
+    "in_stock": true,
+    "weight_grams": 390
+  },
+  {
+    "id": "DW006",
+    "name": "ZUS Espresso Cup Set (4pcs) - Ceramic",
+    "category": "Drinkware",
+    "subcategory": "Cup Sets",
+    "description": "Premium ceramic espresso cup set, perfect for coffee connoisseurs. Each cup features the iconic ZUS logo and is crafted from high-quality porcelain. Comes with matching saucers for an authentic café experience at home.",
+    "price_myr": 120.00,
+    "capacity_ml": 90,
+    "material": "Premium Porcelain",
+    "features": [
+      "Professional barista quality",
+      "Microwave safe",
+      "Dishwasher safe",
+      "Chip-resistant",
+      "Elegant design",
+      "Set includes 4 cups and 4 saucers"
+    ],
+    "colors": ["Classic White with Gold Rim", "Matte Black"],
+    "care_instructions": "Dishwasher and microwave safe.",
+    "in_stock": false,
+    "weight_grams": 800
+  },
+  {
+    "id": "DW007",
+    "name": "ZUS Iced Coffee Tumbler 700ml (24oz) with Straw",
+    "category": "Drinkware",
+    "subcategory": "Tumblers",
+    "description": "Specially designed for iced coffee lovers. Includes a reusable stainless steel straw and splash-proof lid. The tapered base fits perfectly in car cup holders while the slim design makes it easy to carry.",
+    "price_myr": 75.00,
+    "capacity_ml": 700,
+    "material": "Stainless Steel",
+    "features": [
+      "Includes reusable metal straw",
+      "Splash-proof flip lid",
+      "Sweat-proof exterior",
+      "Cup holder friendly",
+      "BPA-free",
+      "Cleaning brush included"
+    ],
+    "colors": ["Sunset Orange", "Lavender Purple", "Mint Green", "Coral Pink"],
+    "care_instructions": "Dishwasher safe. Straw brush included for easy cleaning.",
+    "in_stock": true,
+    "weight_grams": 320
+  },
+  {
+    "id": "DW008",
+    "name": "ZUS French Press Coffee Maker 1000ml (34oz)",
+    "category": "Drinkware",
+    "subcategory": "Brewing Equipment",
+    "description": "Premium borosilicate glass French press with stainless steel frame. Brew perfect coffee at home with this professional-grade coffee maker. Features a 4-level filtration system for a smooth, sediment-free cup.",
+    "price_myr": 135.00,
+    "capacity_ml": 1000,
+    "material": "Borosilicate Glass and Stainless Steel",
+    "features": [
+      "4-level filtration system",
+      "Heat-resistant glass",
+      "Durable stainless steel frame",
+      "Easy to disassemble and clean",
+      "Makes 8-10 cups",
+      "Dishwasher safe"
+    ],
+    "colors": ["Silver Frame", "Black Frame"],
+    "care_instructions": "Dishwasher safe. Handle glass carafe with care.",
+    "in_stock": true,
+    "weight_grams": 650
+  }
+]
+

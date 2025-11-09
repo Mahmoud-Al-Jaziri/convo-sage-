@@ -9,6 +9,7 @@ from langchain import hub
 from app.config import settings
 from app.agents.mock_llm import MockLLM
 from app.tools.calculator import CalculatorTool
+from app.tools.product_search import ProductSearchTool
 
 
 class ToolAgent:
@@ -40,7 +41,7 @@ class ToolAgent:
             print("🤖 Using OpenAI GPT-3.5-turbo with tools")
         
         # Initialize tools
-        self.tools = tools or [CalculatorTool()]
+        self.tools = tools or [CalculatorTool(), ProductSearchTool()]
         
         # For mock LLM, we'll use a simple pattern matcher instead of full ReAct
         # In production with real LLM, we'd use create_react_agent
@@ -88,11 +89,23 @@ class ToolAgent:
     async def _simple_tool_dispatch(self, message: str) -> str:
         """
         Simple tool dispatcher for mock LLM.
-        Detects calculation requests and uses calculator tool.
+        Detects tool requests: calculations, product search, etc.
         """
         import re
         
         message_lower = message.lower()
+        
+        # Check for product search requests
+        product_keywords = ["product", "tumbler", "bottle", "cup", "mug", "drinkware", 
+                           "buy", "purchase", "price", "available", "stock"]
+        has_product_keyword = any(kw in message_lower for kw in product_keywords)
+        
+        if has_product_keyword:
+            # Use product search tool
+            for tool in self.tools:
+                if tool.name == "product_search":
+                    result = tool._run(message)
+                    return result
         
         # Check if this is a calculation request
         calc_keywords = ["calculate", "compute", "what is", "solve"]
