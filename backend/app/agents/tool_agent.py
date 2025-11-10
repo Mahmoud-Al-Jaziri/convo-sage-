@@ -10,6 +10,7 @@ from app.config import settings
 from app.agents.mock_llm import MockLLM
 from app.tools.calculator import CalculatorTool
 from app.tools.product_search import ProductSearchTool
+from app.tools.outlet_search import OutletSearchTool
 
 
 class ToolAgent:
@@ -41,7 +42,7 @@ class ToolAgent:
             print("🤖 Using OpenAI GPT-3.5-turbo with tools")
         
         # Initialize tools
-        self.tools = tools or [CalculatorTool(), ProductSearchTool()]
+        self.tools = tools or [CalculatorTool(), ProductSearchTool(), OutletSearchTool()]
         
         # For mock LLM, we'll use a simple pattern matcher instead of full ReAct
         # In production with real LLM, we'd use create_react_agent
@@ -94,6 +95,19 @@ class ToolAgent:
         import re
         
         message_lower = message.lower()
+        
+        # Check for outlet search requests (higher priority than products)
+        outlet_keywords = ["outlet", "location", "address", "store", "branch", 
+                          "drive-through", "drive-thru", "wifi", "operating hours", 
+                          "opening hours", "where", "city", "state"]
+        has_outlet_keyword = any(kw in message_lower for kw in outlet_keywords)
+        
+        if has_outlet_keyword:
+            # Use outlet search tool
+            for tool in self.tools:
+                if tool.name == "outlet_search":
+                    result = tool._run(message)
+                    return result
         
         # Check for product search requests
         product_keywords = ["product", "tumbler", "bottle", "cup", "mug", "drinkware", 
