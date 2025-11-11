@@ -379,7 +379,3 @@ User: "Calculate the total if I buy 2 tumblers at RM59 each"
 Bot: "The result of 2*59 is 118"
 ```
 
----
-
-*Last updated: Day 7*
-*106 tests passing | All features operational*

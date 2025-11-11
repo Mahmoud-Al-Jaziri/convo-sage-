@@ -1,10 +1,10 @@
 # Architecture Overview
 
-Current system architecture as of Day 1.
+ConvoSage system architecture.
 
 ---
 
-## System Architecture (Day 1)
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -12,10 +12,10 @@ Current system architecture as of Day 1.
 │                    (React + Vite)                           │
 │                   Port: 5173                                │
 │                                                             │
-│  - Landing Page (Day 1) ✅                                  │
-│  - Chat Interface (Days 8-9) ⏳                             │
-│  - Quick Actions ⏳                                          │
-│  - localStorage Persistence ⏳                               │
+│  - Landing Page ✅                                          │
+│  - Chat Interface ✅                                        │
+│  - Quick Actions ✅                                         │
+│  - localStorage Persistence ✅                              │
 └──────────────────┬──────────────────────────────────────────┘
                    │
                    │ HTTP/REST
@@ -31,34 +31,34 @@ Current system architecture as of Day 1.
 │  │  GET  /              - Root ✅                      │   │
 │  │  GET  /health        - Health Check ✅              │   │
 │  │  GET  /docs          - OpenAPI Docs ✅              │   │
-│  │  POST /chat          - Conversation (Day 2) ⏳      │   │
-│  │  GET  /products      - RAG Search (Day 5) ⏳        │   │
-│  │  GET  /outlets       - Text2SQL (Day 6) ⏳          │   │
-│  │  POST /calculator    - Tool Call (Day 3) ⏳         │   │
+│  │  POST /chat          - Conversation ✅              │   │
+│  │  GET  /products      - RAG Search ✅                │   │
+│  │  GET  /outlets       - Text2SQL ✅                  │   │
+│  │  POST /calculator    - Tool Call ✅                 │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
 │  ┌─────────────────────────────────────────────────────┐   │
-│  │           LangChain Agents (Day 2+)                 │   │
+│  │           LangChain Agents                          │   │
 │  ├─────────────────────────────────────────────────────┤   │
-│  │  - Conversation Agent with Memory ⏳                 │   │
-│  │  - Planner/Controller (ReAct) ⏳                     │   │
-│  │  - Multi-turn State Tracking ⏳                      │   │
+│  │  - Conversation Agent with Memory ✅                │   │
+│  │  - Planner/Controller (ReAct) ✅                    │   │
+│  │  - Multi-turn State Tracking ✅                     │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
 │  ┌─────────────────────────────────────────────────────┐   │
-│  │               Custom Tools (Day 3+)                 │   │
+│  │               Custom Tools                          │   │
 │  ├─────────────────────────────────────────────────────┤   │
-│  │  - Calculator Tool ⏳                                │   │
-│  │  - Products Search Tool ⏳                           │   │
-│  │  - Outlets Query Tool ⏳                             │   │
+│  │  - Calculator Tool ✅                               │   │
+│  │  - Products Search Tool ✅                          │   │
+│  │  - Outlets Query Tool ✅                            │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
 │  ┌─────────────────────────────────────────────────────┐   │
 │  │                  Services                           │   │
 │  ├─────────────────────────────────────────────────────┤   │
-│  │  - Product Service (RAG) ⏳                          │   │
-│  │  - Outlets Service (Text2SQL) ⏳                     │   │
-│  │  - Text2SQL Service ⏳                               │   │
+│  │  - Product Service (RAG) ✅                         │   │
+│  │  - Outlets Service (Text2SQL) ✅                    │   │
+│  │  - Text2SQL Service ✅                              │   │
 │  └─────────────────────────────────────────────────────┘   │
 └──────────────────┬──────────────────┬──────────────────────┘
                    │                  │
@@ -66,23 +66,23 @@ Current system architecture as of Day 1.
         │   Vector Store │   │   SQL Database    │
         │    (FAISS)     │   │    (SQLite)       │
         │                │   │                   │
-        │  - Products    │   │  - Outlets Table  │
-        │    Embeddings  │   │  - Location Data  │
-        │                │   │  - Hours, etc.    │
-        │  (Day 5) ⏳    │   │  (Day 4) ⏳       │
+│  - Products    │   │  - Outlets Table  │
+│    Embeddings  │   │  - Location Data  │
+│                │   │  - Hours, etc.    │
+│  ✅            │   │  ✅               │
         └────────────────┘   └───────────────────┘
                    │                  │
         ┌──────────▼──────────────────▼──────────┐
         │         External Services               │
         ├─────────────────────────────────────────┤
-        │  - OpenAI API (GPT-4) ⏳                │
-        │  - OpenAI Embeddings ⏳                 │
+        │  - OpenAI API (GPT-4) ✅                │
+        │  - OpenAI Embeddings ✅                 │
         └─────────────────────────────────────────┘
 ```
 
 ---
 
-## Data Flow (Planned for Day 2+)
+## Data Flow
 
 ### Chat Message Flow
 ```
@@ -111,7 +111,7 @@ Current system architecture as of Day 1.
 6. Return response to Frontend
 ```
 
-### RAG Search Flow (Day 5)
+### RAG Search Flow
 ```
 1. User query: "best insulated tumbler"
    │
@@ -132,7 +132,7 @@ Current system architecture as of Day 1.
 5. Return formatted response
 ```
 
-### Text2SQL Flow (Day 6)
+### Text2SQL Flow
 ```
 1. User query: "outlets in Petaling Jaya"
    │
@@ -194,84 +194,73 @@ Current system architecture as of Day 1.
 convo-sage/
 ├── backend/              # FastAPI application
 │   ├── app/
-│   │   ├── main.py       # ✅ App entry, CORS, routes
-│   │   ├── config.py     # ✅ Settings from env
-│   │   ├── api/          # ⏳ Endpoint handlers
-│   │   ├── agents/       # ⏳ LangChain agents
-│   │   ├── tools/        # ⏳ Custom tools
-│   │   ├── services/     # ⏳ Business logic
-│   │   ├── models/       # ⏳ Pydantic schemas
-│   │   └── db/           # ⏳ DB & vector store
-│   ├── tests/            # ✅ Test suite
-│   ├── requirements.txt  # ✅ Dependencies
-│   └── .env              # ⏠ Config (add API key!)
+│   │   ├── main.py       # App entry, CORS, routes
+│   │   ├── config.py     # Settings from env
+│   │   ├── api/          # Endpoint handlers
+│   │   ├── agents/       # LangChain agents
+│   │   ├── tools/        # Custom tools
+│   │   ├── services/     # Business logic
+│   │   ├── models/       # Pydantic schemas
+│   │   └── db/           # DB & vector store
+│   ├── tests/            # Test suite
+│   ├── requirements.txt  # Dependencies
+│   └── .env              # Configuration
 │
 ├── frontend/             # React application
 │   ├── src/
-│   │   ├── App.jsx       # ✅ Main component
-│   │   ├── main.jsx      # ✅ Entry point
-│   │   ├── components/   # ⏳ Chat UI components
-│   │   ├── services/     # ⏳ API clients
-│   │   └── hooks/        # ⏳ Custom hooks
-│   └── package.json      # ✅ Dependencies
+│   │   ├── App.jsx       # Main component
+│   │   ├── main.jsx      # Entry point
+│   │   ├── components/   # Chat UI components
+│   │   ├── services/     # API clients
+│   │   └── hooks/        # Custom hooks
+│   └── package.json      # Dependencies
 │
 ├── data/                 # Data storage
-│   ├── products_raw.json # ⏳ ZUS drinkware data
-│   ├── outlets_raw.json  # ⏳ ZUS outlet data
-│   ├── app.db            # ⏳ SQLite database
-│   └── vector_store/     # ⏳ FAISS index files
+│   ├── products_raw.json # ZUS drinkware data
+│   ├── outlets_raw.json  # ZUS outlet data
+│   ├── app.db            # SQLite database
+│   └── vector_store/     # FAISS index files
 │
 ├── scripts/              # Utility scripts
-│   ├── scrape_products.py  # ⏳ Product scraper
-│   ├── scrape_outlets.py   # ⏳ Outlet scraper
-│   └── build_vector_store.py # ⏳ FAISS indexing
+│   ├── scrape_products.py  # Product scraper
+│   ├── scrape_outlets.py   # Outlet scraper
+│   └── build_vector_store.py # FAISS indexing
 │
 └── docs/                 # Documentation
-    ├── milestone-plan.md      # ✅ 10-day plan
-    ├── backend-patterns.md    # ✅ Code conventions
-    ├── learning-resources.md  # ✅ Learning guides
-    ├── progress.md            # ✅ Daily progress
-    ├── day1-summary.md        # ✅ Day 1 recap
-    └── architecture-diagram.md # ✅ This file
-
-Legend:
-  ✅ Complete
-  ⏳ Planned/In Progress
-  ⏠ Action Required
+    ├── backend-patterns.md    # Code conventions
+    ├── api-spec.md            # API documentation
+    └── architecture-diagram.md # System architecture
 ```
 
 ---
 
-## API Endpoints (Final State)
+## API Endpoints
 
 | Method | Endpoint | Purpose | Status |
 |--------|----------|---------|--------|
-| GET | `/` | API info | ✅ Day 1 |
-| GET | `/health` | Health check | ✅ Day 1 |
-| GET | `/docs` | OpenAPI docs | ✅ Day 1 |
-| POST | `/chat` | Conversation | ⏳ Day 2 |
-| POST | `/calculator` | Arithmetic tool | ⏳ Day 3 |
-| GET | `/products` | RAG search | ⏳ Day 5 |
-| GET | `/outlets` | Text2SQL query | ⏳ Day 6 |
+| GET | `/` | API info | ✅ |
+| GET | `/health` | Health check | ✅ |
+| GET | `/docs` | OpenAPI docs | ✅ |
+| POST | `/chat` | Conversation | ✅ |
+| POST | `/calculator` | Arithmetic tool | ✅ |
+| GET | `/products` | RAG search | ✅ |
+| GET | `/outlets` | Text2SQL query | ✅ |
 
 ---
 
 ## Security Considerations
 
-### Implemented (Day 1)
 - ✅ CORS configured for specific origins
 - ✅ Environment variables for secrets
 - ✅ .gitignore for sensitive files
-
-### Planned
-- ⏳ SQL injection prevention (parameterized queries)
-- ⏳ Input validation (Pydantic)
-- ⏳ Rate limiting (if time permits)
-- ⏳ Error message sanitization
+- ✅ SQL injection prevention (parameterized queries)
+- ✅ Input validation (Pydantic)
+- ✅ Rate limiting
+- ✅ Error message sanitization
 
 ---
 
-## Deployment Architecture (Day 10)
+## Deployment Architecture
 
 ```
 ┌─────────────────────────────────┐
@@ -297,20 +286,4 @@ Legend:
 └─────────────────────────────────┘
 ```
 
----
-
-## Next Evolution (Day 2)
-
-The next major update to this architecture will be:
-
-1. **Conversation Agent** - LangChain agent with memory
-2. **Memory Store** - Session-based state management
-3. **Chat Endpoint** - POST /chat handler
-4. **Multi-turn Testing** - Verify 3+ turn conversations
-
-**See**: `docs/milestone-plan.md` (Day 2 section) for details.
-
----
-
-*Last Updated: Day 1 - November 4, 2025*
 

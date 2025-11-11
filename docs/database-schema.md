@@ -80,16 +80,12 @@ SELECT city, COUNT(*) as total FROM outlets GROUP BY city;
 
 ## Vector Store
 
-### Products Index (Coming Day 5)
+### Products Index
 
 - **Type**: FAISS vector store
 - **Location**: `data/vector_store/`
-- **Embeddings**: OpenAI text-embedding-ada-002
+- **Embeddings**: TF-IDF based custom embedder
 - **Purpose**: Product search for RAG queries
 
 **Indexed Data**: ZUS drinkware products (tumblers, bottles, mugs)
-
----
-
-*Schema will be updated as we build*
 

@@ -169,19 +169,6 @@ We test three key behaviors:
        chat("What's my name?")  # Uses memory
    ```
 
-## Future Enhancements
-
-### Day 5+: Additional Tools
-- **ProductSearchTool**: RAG for product queries
-- **OutletQueryTool**: Text2SQL for outlet information
-- **WeatherTool**: External API integration (stretch goal)
-
-### Advanced Agentic Patterns
-- **Multi-step reasoning**: Chain tool calls
-- **Tool composition**: Use multiple tools in sequence
-- **Confidence scoring**: Agent expresses uncertainty
-- **Clarification requests**: Ask user for more info
-
 ## Configuration
 
 Toggle between mock and real LLM in `config.py`:
@@ -191,10 +178,4 @@ USE_MOCK_LLM: bool = True  # False for GPT-3.5/4
 ```
 
 Mock LLM uses simple pattern matching, while real LLM uses full ReAct reasoning.
-
----
-
-**Implementation Status**: ✅ Complete  
-**Test Coverage**: 30/30 tests passing  
-**Next**: Add RAG and Text2SQL tools (Days 5-6)
 

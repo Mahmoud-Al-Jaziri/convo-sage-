@@ -314,16 +314,11 @@ Use these quick tests to verify everything works:
 
 ## Known Limitations
 
-1. **Mock LLM**: The bot uses a simple pattern-matching LLM for testing
-   - Conversational responses are basic
-   - No real AI understanding
-   - Only handles simple patterns
-
-2. **No Authentication**: Sessions are stored locally
+1. **No Authentication**: Sessions are stored locally
    - Anyone can see the conversation
    - No user accounts
 
-3. **LocalStorage Only**: No server-side persistence
+2. **LocalStorage Only**: No server-side persistence
    - Clear browser data = lose history
    - No sync across devices
 
@@ -385,7 +380,6 @@ The chat interface is working correctly if:
 - **Frontend README**: `frontend/README.md`
 - **Backend API Docs**: `http://localhost:8000/docs`
 - **Architecture Docs**: `docs/frontend-architecture.md`
-- **Day 8 Summary**: `docs/DAY_8_COMPLETE.md`
 
 ---
 
