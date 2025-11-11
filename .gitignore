@@ -88,13 +88,8 @@ coverage/
 *key*
 !**/example*
 
-# Personal notes and AI assistance files (DO NOT COMMIT)
+# Development notes
 NEXT_STEPS.md
-DAY_*_COMPLETE.md
-docs/day*-summary.md
-docs/progress.md
-docs/learning-resources.md
-docs/milestone-plan.md
 **/TODO.md
 **/NOTES.md
 **/*-notes.md
