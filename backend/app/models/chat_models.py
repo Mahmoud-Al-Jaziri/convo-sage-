@@ -1,6 +1,6 @@
 """Pydantic models for chat endpoints."""
 from dataclasses import field
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import Optional
 from datetime import datetime
 
@@ -14,6 +14,14 @@ class ChatRequest(BaseModel):
         max_length=2000,
         description="User message"
     )
+    
+    @field_validator('message')
+    @classmethod
+    def validate_message_not_empty(cls, v: str) -> str:
+        """Validate that message is not just whitespace."""
+        if not v or not v.strip():
+            raise ValueError("Message cannot be empty or contain only whitespace")
+        return v.strip()
     session_id: Optional[str] = Field(
         None,
         description="Session ID for conversation tracking. If not provided, a new session will be created."

@@ -2,6 +2,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
+from app.middleware.error_handlers import register_error_handlers
+from app.middleware.rate_limit import rate_limiter
 
 # Create FastAPI app
 app = FastAPI(
@@ -11,6 +13,9 @@ app = FastAPI(
     debug=settings.DEBUG,
 )
 
+# Register custom error handlers
+register_error_handlers(app)
+
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
@@ -19,6 +24,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Add rate limiting middleware
+app.middleware("http")(rate_limiter)
 
 
 @app.get("/health")
