@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import MessageList from './MessageList';
 import InputComposer from './InputComposer';
+import QuickActions from './QuickActions';
 import './ChatWindow.css';
+import { parseCommand, commandToMessage, getHelpMessage } from '../utils/commandParser';
 
 /**
  * ChatWindow Component
@@ -13,6 +15,8 @@ import './ChatWindow.css';
  * - API integration
  * - Session management
  * - Error handling
+ * - Command parsing
+ * - Message persistence
  */
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
@@ -27,11 +31,29 @@ const ChatWindow = () => {
   useEffect(() => {
     // Check if there's a saved session
     const savedSessionId = localStorage.getItem('chatSessionId');
+    const savedMessages = localStorage.getItem('chatMessages');
+    
     if (savedSessionId) {
       setSessionId(savedSessionId);
+      // Try to load from localStorage first (faster)
+      if (savedMessages) {
+        try {
+          setMessages(JSON.parse(savedMessages));
+        } catch (e) {
+          console.error('Failed to parse saved messages:', e);
+        }
+      }
+      // Then load from backend (for sync)
       loadHistory(savedSessionId);
     }
   }, []);
+  
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem('chatMessages', JSON.stringify(messages));
+    }
+  }, [messages]);
 
   // Load conversation history
   const loadHistory = async (sid) => {
@@ -66,6 +88,38 @@ const ChatWindow = () => {
   const handleSendMessage = async (messageText) => {
     // Clear error
     setError(null);
+    
+    // Handle special commands
+    const parsed = parseCommand(messageText);
+    if (parsed) {
+      if (parsed.command === 'reset' || parsed.command === 'clear') {
+        // Handle reset command
+        handleClearChat();
+        return;
+      }
+      
+      if (parsed.command === 'help') {
+        // Show help message
+        const userMessage = {
+          message: messageText,
+          sender: 'user',
+          timestamp: new Date().toISOString()
+        };
+        const helpMessage = {
+          message: getHelpMessage(),
+          sender: 'bot',
+          timestamp: new Date().toISOString()
+        };
+        setMessages(prev => [...prev, userMessage, helpMessage]);
+        return;
+      }
+      
+      // Convert command to natural language
+      const naturalMessage = commandToMessage(parsed.command, parsed.args);
+      if (naturalMessage) {
+        messageText = naturalMessage;
+      }
+    }
 
     // Add user message to UI immediately
     const userMessage = {
@@ -143,6 +197,7 @@ const ChatWindow = () => {
       setSessionId(null);
       setError(null);
       localStorage.removeItem('chatSessionId');
+      localStorage.removeItem('chatMessages');
     } catch (error) {
       console.error('Error clearing chat:', error);
     }
@@ -212,6 +267,20 @@ const ChatWindow = () => {
 
       {/* Messages */}
       <MessageList messages={messages} isLoading={isLoading} />
+
+      {/* Quick Actions */}
+      <QuickActions onActionClick={(command) => {
+        // Trigger input focus with command (would need to pass ref or callback)
+        // For now, just send the command
+        const textarea = document.querySelector('.message-input');
+        if (textarea) {
+          textarea.value = command;
+          textarea.focus();
+          // Trigger change event
+          const event = new Event('input', { bubbles: true });
+          textarea.dispatchEvent(event);
+        }
+      }} />
 
       {/* Input */}
       <InputComposer onSendMessage={handleSendMessage} isLoading={isLoading} />

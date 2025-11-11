@@ -5,6 +5,13 @@
   background: white;
   border-top: 1px solid #e5e5e5;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.input-composer:focus-within {
+  background: #fafafa;
+  box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .input-container {
@@ -154,8 +161,16 @@
   }
 }
 
-/* Focus within effect */
-.input-composer:focus-within {
-  background: #fafafa;
+/* Enhanced send button animation */
+.send-button svg {
+  transition: transform 0.2s ease;
+}
+
+.send-button:hover svg {
+  transform: rotate(-15deg) scale(1.1);
+}
+
+.send-button:active svg {
+  transform: rotate(-15deg) scale(0.9);
 }
 

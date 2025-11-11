@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MessageBubble.css';
+import ToolBadge from './ToolBadge';
+import { detectToolUsed } from '../utils/commandParser';
 
 /**
  * MessageBubble Component
@@ -9,9 +11,14 @@ import './MessageBubble.css';
  * @param {string} props.message - The message text
  * @param {string} props.sender - 'user' or 'bot'
  * @param {string} props.timestamp - ISO timestamp string
+ * @param {string} props.tool - Tool used (optional)
  */
-const MessageBubble = ({ message, sender, timestamp }) => {
+const MessageBubble = ({ message, sender, timestamp, tool }) => {
   const isUser = sender === 'user';
+  const [showCopyButton, setShowCopyButton] = useState(false);
+  
+  // Detect tool if not provided
+  const detectedTool = tool || (!isUser ? detectToolUsed(message) : null);
   
   // Format timestamp
   const formatTime = (isoString) => {
@@ -21,9 +28,19 @@ const MessageBubble = ({ message, sender, timestamp }) => {
       minute: '2-digit' 
     });
   };
+  
+  // Copy message to clipboard
+  const handleCopy = () => {
+    navigator.clipboard.writeText(message);
+    // Could add a toast notification here
+  };
 
   return (
-    <div className={`message-bubble ${isUser ? 'user' : 'bot'}`}>
+    <div 
+      className={`message-bubble ${isUser ? 'user' : 'bot'}`}
+      onMouseEnter={() => setShowCopyButton(true)}
+      onMouseLeave={() => setShowCopyButton(false)}
+    >
       <div className="message-avatar">
         {isUser ? '👤' : '🤖'}
       </div>
@@ -38,7 +55,19 @@ const MessageBubble = ({ message, sender, timestamp }) => {
         </div>
         <div className="message-text">
           {message}
+          {showCopyButton && (
+            <button 
+              className="copy-button" 
+              onClick={handleCopy}
+              title="Copy message"
+            >
+              📋
+            </button>
+          )}
         </div>
+        {detectedTool && !isUser && (
+          <ToolBadge tool={detectedTool} />
+        )}
       </div>
     </div>
   );

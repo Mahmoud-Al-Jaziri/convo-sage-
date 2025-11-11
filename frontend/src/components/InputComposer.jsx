@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './InputComposer.css';
+import CommandSuggestions from './CommandSuggestions';
+import { isCommand, getCommandSuggestions, parseCommand, commandToMessage } from '../utils/commandParser';
 
 /**
  * InputComposer Component
@@ -10,6 +12,7 @@ import './InputComposer.css';
  * - Auto-resize textarea
  * - Disabled during loading
  * - Clear on send
+ * - Command autocomplete with /
  * 
  * @param {Object} props
  * @param {Function} props.onSendMessage - Callback when message is sent
@@ -17,6 +20,9 @@ import './InputComposer.css';
  */
 const InputComposer = ({ onSendMessage, isLoading }) => {
   const [message, setMessage] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
+  const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(0);
   const textareaRef = useRef(null);
 
   // Auto-resize textarea
@@ -43,6 +49,41 @@ const InputComposer = ({ onSendMessage, isLoading }) => {
   };
 
   const handleKeyDown = (e) => {
+    // Handle command suggestions navigation
+    if (showSuggestions && suggestions.length > 0) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setSelectedSuggestionIndex((prev) => 
+          prev < suggestions.length - 1 ? prev + 1 : 0
+        );
+        return;
+      }
+      
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setSelectedSuggestionIndex((prev) => 
+          prev > 0 ? prev - 1 : suggestions.length - 1
+        );
+        return;
+      }
+      
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setShowSuggestions(false);
+        return;
+      }
+      
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        // Select suggestion
+        const selected = suggestions[selectedSuggestionIndex];
+        if (selected) {
+          handleSuggestionSelect(selected);
+        }
+        return;
+      }
+    }
+    
     // Enter without Shift = send
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -51,16 +92,42 @@ const InputComposer = ({ onSendMessage, isLoading }) => {
   };
 
   const handleChange = (e) => {
-    setMessage(e.target.value);
+    const newMessage = e.target.value;
+    setMessage(newMessage);
+    
+    // Check for command and show suggestions
+    if (isCommand(newMessage)) {
+      const cmdSuggestions = getCommandSuggestions(newMessage);
+      setSuggestions(cmdSuggestions);
+      setShowSuggestions(cmdSuggestions.length > 0);
+      setSelectedSuggestionIndex(0);
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+  
+  const handleSuggestionSelect = (suggestion) => {
+    setMessage(suggestion.display + ' ');
+    setShowSuggestions(false);
+    textareaRef.current?.focus();
   };
 
   return (
     <form className="input-composer" onSubmit={handleSubmit}>
+      {/* Command Suggestions */}
+      {showSuggestions && (
+        <CommandSuggestions
+          suggestions={suggestions}
+          onSelect={handleSuggestionSelect}
+          selectedIndex={selectedSuggestionIndex}
+        />
+      )}
+      
       <div className="input-container">
         <textarea
           ref={textareaRef}
           className="message-input"
-          placeholder={isLoading ? "Bot is typing..." : "Type a message... (Enter to send, Shift+Enter for new line)"}
+          placeholder={isLoading ? "Bot is typing..." : "Type / for quick actions or start typing..."}
           value={message}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
@@ -98,7 +165,7 @@ const InputComposer = ({ onSendMessage, isLoading }) => {
           {message.length}/2000
         </span>
         <span className="input-tip">
-          💡 Try: "Calculate 25 * 4" or "Show me tumblers" or "Outlets in KL"
+          💡 Try: "/" for commands, "Calculate 25 * 4", or "Show me tumblers"
         </span>
       </div>
     </form>

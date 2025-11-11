@@ -1,0 +1,138 @@
+/* CommandSuggestions Styles */
+
+.command-suggestions {
+  position: absolute;
+  bottom: 100%;
+  left: 20px;
+  right: 20px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: slideUp 0.2s ease-out;
+  z-index: 1000;
+  max-width: 600px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.suggestions-header {
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.suggestions-icon {
+  font-size: 16px;
+}
+
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item.selected {
+  background: #f8f9fa;
+}
+
+.suggestion-item.selected {
+  background: #e8f0fe;
+  border-left: 3px solid #667eea;
+}
+
+.suggestion-command {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: #667eea;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.suggestion-description {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.suggestions-footer {
+  padding: 8px 16px;
+  background: #f8f9fa;
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+
+.suggestions-footer kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #666;
+  margin: 0 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom scrollbar for suggestions */
+.suggestions-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.suggestions-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.suggestions-list::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .command-suggestions {
+    left: 16px;
+    right: 16px;
+  }
+  
+  .suggestions-footer {
+    display: none; /* Hide keyboard hints on mobile */
+  }
+}
+
