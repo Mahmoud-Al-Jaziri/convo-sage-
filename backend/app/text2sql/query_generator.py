@@ -34,20 +34,23 @@ class Text2SQLGenerator:
         """Initialize the Text2SQL generator."""
         self.query_patterns = [
             # Combined queries (must come BEFORE simple location queries)
-            (r'outlets?\s+in\s+([a-z0-9\s\'\-;]+?)\s+with\s+drive[\s-]?thro?u?gh?', self._query_location_with_drive_thru),
+            (r'outlets?\s+in\s+([a-z0-9\s\'\-;]+?)\s+with\s+(?:free\s+)?wifi', self._query_location_with_wifi),
+            (r'outlets?\s+in\s+([a-z0-9\s\'\-;]+?)\s+with\s+drive[\s-]?(?:thru|through)', self._query_location_with_drive_thru),
             (r'outlets?\s+in\s+([a-z0-9\s\'\-;]+?)\s+(?:that\s+)?(?:have|has)\s+wifi', self._query_location_with_wifi),
             
             # Location-based queries (now allows more chars to catch invalid input)
-            (r'outlets?\s+in\s+([a-z0-9\s\'\-;]+?)(?:\s*$)', self._query_by_location),
-            (r'(?:find|show|list|get)\s+(?:me\s+)?(?:all\s+)?outlets?\s+in\s+([a-z0-9\s\'\-;]+)', self._query_by_location),
-            (r'where\s+(?:are|is)\s+(?:the\s+)?outlets?\s+in\s+([a-z0-9\s\'\-;]+)', self._query_by_location),
+            (r'outlets?\s+in\s+([a-z0-9\s\'\-;]+?)(?=\s+(?:that|with|having|who|which)\b|\s*$)', self._query_by_location),
+            (r'(?:find|show|list|get)\s+(?:me\s+)?(?:all\s+)?outlets?\s+in\s+([a-z0-9\s\'\-;]+?)(?=\s+(?:that|with|having|who|which)\b|\s*$)', self._query_by_location),
+            (r'where\s+(?:are|is)\s+(?:the\s+)?outlets?\s+in\s+([a-z0-9\s\'\-;]+?)(?=\s+(?:that|with|having|who|which)\b|\s*$)', self._query_by_location),
             
             # Feature-based queries
-            (r'(?:which|what)\s+outlets?\s+(?:have|has)\s+drive[\s-]?thro?u?gh?', self._query_with_drive_thru),
-            (r'outlets?\s+with\s+drive[\s-]?thro?u?gh?', self._query_with_drive_thru),
-            (r'drive[\s-]?thro?u?gh?\s+outlets?', self._query_with_drive_thru),
+            (r'(?:which|what)\s+outlets?\s+(?:have|has)\s+drive[\s-]?(?:thru|through)', self._query_with_drive_thru),
+            (r'outlets?\s+with\s+drive[\s-]?(?:thru|through)', self._query_with_drive_thru),
+            (r'(?:find|show|list|get)\s+(?:me\s+)?(?:all\s+)?outlets?\s+with\s+drive[\s-]?(?:thru|through)', self._query_with_drive_thru),
+            (r'drive[\s-]?(?:thru|through)\s+outlets?', self._query_with_drive_thru),
             (r'(?:which|what)\s+outlets?\s+(?:have|has)\s+wifi', self._query_with_wifi),
-            (r'outlets?\s+with\s+wifi', self._query_with_wifi),
+            (r'outlets?\s+with\s+(?:free\s+)?wifi', self._query_with_wifi),
+            (r'(?:find|show|list|get)\s+(?:me\s+)?(?:all\s+)?outlets?\s+with\s+(?:free\s+)?wifi', self._query_with_wifi),
             (r'outlets?\s+(?:that\s+)?(?:have|has)\s+wifi', self._query_with_wifi),
             (r'wifi\s+outlets?', self._query_with_wifi),
             

@@ -34,6 +34,67 @@ const MessageBubble = ({ message, sender, timestamp, tool }) => {
     navigator.clipboard.writeText(message);
     // Could add a toast notification here
   };
+  
+  // Format message with better structure
+  const formatMessage = (text) => {
+    if (!text) return null;
+    
+    // Split by lines
+    const lines = text.split('\n');
+    
+    return lines.map((line, index) => {
+      // Numbered list (e.g., "1. Item")
+      if (/^\d+\.\s/.test(line)) {
+        return (
+          <div key={index} className="message-list-item">
+            {line}
+          </div>
+        );
+      }
+      
+      // Bullet points (e.g., "• Item" or "- Item")
+      if (/^[•\-]\s/.test(line)) {
+        return (
+          <div key={index} className="message-bullet-item">
+            {line}
+          </div>
+        );
+      }
+      
+      // Bold text (e.g., "**text**")
+      if (line.includes('**')) {
+        const parts = line.split(/\*\*(.*?)\*\*/g);
+        return (
+          <p key={index} className="message-paragraph">
+            {parts.map((part, i) => 
+              i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+            )}
+          </p>
+        );
+      }
+      
+      // Headers (lines ending with ":")
+      if (line.trim().endsWith(':') && line.length < 50) {
+        return (
+          <div key={index} className="message-header-text">
+            {line}
+          </div>
+        );
+      }
+      
+      // Empty lines
+      if (line.trim() === '') {
+        return <br key={index} />;
+      }
+      
+      // Regular paragraphs
+      return (
+        <p key={index} className="message-paragraph">
+          {line}
+        </p>
+      );
+    });
+  };
 
   return (
     <div 
@@ -54,7 +115,7 @@ const MessageBubble = ({ message, sender, timestamp, tool }) => {
           </span>
         </div>
         <div className="message-text">
-          {message}
+          {isUser ? message : formatMessage(message)}
           {showCopyButton && (
             <button 
               className="copy-button" 
