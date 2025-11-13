@@ -29,6 +29,10 @@ const ChatWindow = () => {
 
   // Initialize session on mount
   useEffect(() => {
+    // Prevent any scrolling during load
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    
     // Check if there's a saved session
     const savedSessionId = localStorage.getItem('chatSessionId');
     const savedMessages = localStorage.getItem('chatMessages');
@@ -43,7 +47,7 @@ const ChatWindow = () => {
           console.error('Failed to parse saved messages:', e);
         }
       }
-      // Then load from backend (for sync)
+      // Then load from backend (for sync) but don't override UI state
       loadHistory(savedSessionId);
     }
   }, []);
@@ -62,21 +66,28 @@ const ChatWindow = () => {
       if (response.ok) {
         const data = await response.json();
         if (data.history && data.history.length > 0) {
-          // Convert history format to message format
-          const historyMessages = [];
-          data.history.forEach((turn) => {
-            historyMessages.push({
-              message: turn.input,
-              sender: 'user',
-              timestamp: new Date().toISOString()
+          // Only update if we don't already have messages from localStorage
+          setMessages((prevMessages) => {
+            // If we already have messages, don't overwrite them
+            if (prevMessages.length > 0) {
+              return prevMessages;
+            }
+            // Convert history format to message format
+            const historyMessages = [];
+            data.history.forEach((turn) => {
+              historyMessages.push({
+                message: turn.input,
+                sender: 'user',
+                timestamp: new Date().toISOString()
+              });
+              historyMessages.push({
+                message: turn.output,
+                sender: 'bot',
+                timestamp: new Date().toISOString()
+              });
             });
-            historyMessages.push({
-              message: turn.output,
-              sender: 'bot',
-              timestamp: new Date().toISOString()
-            });
+            return historyMessages;
           });
-          setMessages(historyMessages);
         }
       }
     } catch (error) {

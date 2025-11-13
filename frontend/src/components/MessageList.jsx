@@ -13,14 +13,34 @@ import './MessageList.css';
 const MessageList = ({ messages, isLoading }) => {
   const messagesEndRef = useRef(null);
   const containerRef = useRef(null);
+  const isInitialMount = useRef(true);
+  const previousMessageCount = useRef(0);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'end'
-      });
+    if (!containerRef.current) return;
+    
+    // Only scroll if messages were actually added (not on initial load with persisted messages)
+    const messageCountChanged = messages.length !== previousMessageCount.current;
+    previousMessageCount.current = messages.length;
+    
+    if (messageCountChanged || isLoading) {
+      // Use setTimeout to ensure DOM is fully rendered
+      setTimeout(() => {
+        if (containerRef.current) {
+          if (isInitialMount.current && messages.length > 0) {
+            // On initial load with persisted messages, scroll instantly without animation
+            containerRef.current.scrollTop = containerRef.current.scrollHeight;
+            isInitialMount.current = false;
+          } else if (!isInitialMount.current) {
+            // For new messages, smooth scroll
+            containerRef.current.scrollTo({
+              top: containerRef.current.scrollHeight,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }, 0);
     }
   }, [messages, isLoading]);
 
