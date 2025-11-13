@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     DEBUG: bool = True
     
     # CORS - Parse comma-separated origins
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,https://convo-sage.vercel.app"
     
     # Logging
     LOG_LEVEL: str = "INFO"
