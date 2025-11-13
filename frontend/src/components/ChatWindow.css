@@ -4,8 +4,11 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for mobile browsers */
   max-height: 100vh;
+  max-height: 100dvh;
   background: white;
+  position: relative;
 }
 
 /* Header */
