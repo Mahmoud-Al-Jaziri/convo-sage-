@@ -24,8 +24,10 @@ const ChatWindow = () => {
   const [sessionId, setSessionId] = useState(null);
   const [error, setError] = useState(null);
   const [stats, setStats] = useState(null);
+  const [showWarmupNotice, setShowWarmupNotice] = useState(false);
 
   const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+  const USING_RENDER = API_BASE_URL.includes('onrender.com');
 
   // Initialize session on mount
   useEffect(() => {
@@ -50,8 +52,19 @@ const ChatWindow = () => {
       // Then load from backend (for sync) but don't override UI state
       loadHistory(savedSessionId);
     }
+
   }, []);
   
+  useEffect(() => {
+    if (!USING_RENDER) {
+      return;
+    }
+    const dismissed = sessionStorage.getItem('warmupNoticeDismissed');
+    if (!dismissed) {
+      setShowWarmupNotice(true);
+    }
+  }, [USING_RENDER]);
+
   // Save messages to localStorage whenever they change
   useEffect(() => {
     if (messages.length > 0) {
@@ -265,6 +278,25 @@ const ChatWindow = () => {
       {stats && (
         <div className="stats-banner">
           <strong>Stats:</strong> {stats.total_sessions} sessions, {stats.total_messages} messages
+        </div>
+      )}
+
+      {/* Render Warmup Notice */}
+      {showWarmupNotice && (
+        <div className="info-banner">
+          <div>
+            <strong>Heads up:</strong> The chatbot may need up to a minute to wake up because the backend runs on Render’s free tier.
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setShowWarmupNotice(false);
+              sessionStorage.setItem('warmupNoticeDismissed', 'true');
+            }}
+            aria-label="Dismiss warmup notice"
+          >
+            ✕
+          </button>
         </div>
       )}
 
