@@ -119,14 +119,13 @@ Bot: The result of 25*4 is 100
 ```
 User: Show me tumblers
 Bot: Here are the tumblers I found:
-     1. Large Tumbler - RM 45.00
-     2. ZUS Tumbler - RM 55.00
+     
 [Badge: ☕ Product Search]
 ```
 
 ### Outlet Search
 ```
-User: Find outlets in Kuala Lumpur with drive-through
+User: Find outlets in Petaling Jaya with wifi
 Bot: Here are the ZUS Coffee outlets...
 [Badge: 📍 Outlet Finder]
 ```
