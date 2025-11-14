@@ -285,7 +285,7 @@ const ChatWindow = () => {
       {showWarmupNotice && (
         <div className="info-banner">
           <div>
-            <strong>Heads up:</strong> The chatbot may need up to a minute to wake up because the backend runs on Render’s free tier.
+            <strong>Heads up:</strong> The chatbot may need up to 4 minutes to wake up because the backend runs on Render’s free tier.
           </div>
           <button
             type="button"
