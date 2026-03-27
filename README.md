@@ -1,4 +1,4 @@
-# ConvoSage ☕🤖
+# ConvoSage
 
 A conversational AI chatbot for ZUS Coffee with agentic planning, RAG, Text2SQL, and modern UX features.
 
@@ -11,20 +11,20 @@ A conversational AI chatbot for ZUS Coffee with agentic planning, RAG, Text2SQL,
 ## Features
 
 ### Core Capabilities
-- 🤖 **Sequential Conversation** - Multi-turn memory with LangChain
-- 🧠 **Agentic Planning** - Intelligent tool routing and action selection
-- 🧮 **Calculator Tool** - Safe mathematical expression evaluation
-- ☕ **Product Search (RAG)** - Custom TF-IDF vector search
-- 📍 **Outlet Finder (Text2SQL)** - Natural language to SQL queries
-- 🛡️ **Error Handling** - Comprehensive validation and security
+- **Sequential Conversation** - Multi-turn memory with LangChain
+- **Agentic Planning** - Intelligent tool routing and action selection
+- **Calculator Tool** - Safe mathematical expression evaluation
+- **Product Search (RAG)** - Custom TF-IDF vector search
+- **Outlet Finder (Text2SQL)** - Natural language to SQL queries
+- **Error Handling** - Comprehensive validation and security
 
 ### Advanced UX
-- ⚡ **Quick Actions** - Slash commands with autocomplete
-- 🎨 **Tool Badges** - Visual indicators for tool usage
-- 📋 **Copy Messages** - One-click clipboard copy
-- 💾 **Dual Persistence** - localStorage + backend sessions
-- ✨ **Smooth Animations** - 60fps transitions
-- 📱 **Mobile Responsive** - Touch-optimized interface
+- **Quick Actions** - Slash commands with autocomplete
+- **Tool Badges** - Visual indicators for tool usage
+- **Copy Messages** - One-click clipboard copy
+- **Dual Persistence** - localStorage + backend sessions
+- **Smooth Animations** - 60fps transitions
+- **Mobile Responsive** - Touch-optimized interface
 
 ---
 
@@ -112,7 +112,7 @@ Bot: Your name is Sarah.
 ```
 User: Calculate 25 * 4
 Bot: The result of 25*4 is 100
-[Badge: 🧮 Calculator]
+[Badge: Calculator]
 ```
 
 ### Product Search
@@ -120,14 +120,14 @@ Bot: The result of 25*4 is 100
 User: Show me tumblers
 Bot: Here are the tumblers I found:
      
-[Badge: ☕ Product Search]
+[Badge: Product Search]
 ```
 
 ### Outlet Search
 ```
 User: Find outlets in Petaling Jaya with wifi
 Bot: Here are the ZUS Coffee outlets...
-[Badge: 📍 Outlet Finder]
+[Badge: Outlet Finder]
 ```
 
 ### Slash Commands
